@@ -1,0 +1,14 @@
+---
+title: 管理npm源
+tags:
+  - npm
+location: fish
+summary: 通过nrm 管理npm源
+---
+
+## 通过命令查看和设置npm源
+    npm config get registry  // 查看npm当前镜像源
+    npm config set registry  xxx // 设置npm当前镜像源
+## 通过nrm查看和设置npm源
+    nrm ls // 查看npm当前镜像源
+    nrm use taobao // 设置npm当前镜像源

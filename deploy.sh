@@ -34,11 +34,14 @@ git push -u origin master
  yarn && yarn doc:build
 
 # 进入生成的文件夹
-# cd docs/.vuepress/dist
+# cd .vuepress/dist
 # 清除远程服务器目录
 ssh fish@121.37.215.79 "rm -rf /home/fish/www/blog/*"
 # 将本地文件上传到服务器
-scp -r docs/.vuepress/dist/* fish@121.37.215.79:/home/fish/www/blog
+scp -r .vuepress/dist/* fish@121.37.215.79:/home/fish/www/blog
+
+#清除本地文件夹
+
 cd -
 
 

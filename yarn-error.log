@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js add vuepress @vuepress/theme-blog -D
+  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js add @vuepress/theme-blog -D
 
 PATH: 
   C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\xiaoyu18\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Python27;C:\Program Files (x86)\NetSarang\Xshell 7\;C:\Program Files\Java\jdk1.8.0_212\bin;C:\Program Files\Java\jdk1.8.0_212\jre\bin;C:\Program Files (x86)\Tencent\微信web开发者工具\dll;C:\python27\;C:\Users\xiaoyu18\AppData\Local\Microsoft\WindowsApps;C:\Users\xiaoyu18\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\xiaoyu18\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\JetBrains\PyCharm Community Edition 2020.3.5\bin;C:\Users\xiaoyu18\AppData\Local\Programs\Fiddler;C:\Users\xiaoyu18\AppData\Local\Android\Sdk\platform-tools;C:\Users\xiaoyu18\AppData\Local\Android\Sdk\emulator;C:\Users\xiaoyu18\AppData\Local\Android\Sdk\tools;C:\Users\xiaoyu18\AppData\Local\Android\Sdk\tools\bin;
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: connect ETIMEDOUT 104.16.25.35:443
+  Error: connect ETIMEDOUT 104.16.27.35:443
       at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1146:16)
 
 npm manifest: 
@@ -24,8 +24,9 @@ npm manifest:
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-      "doc:dev": "vuepress dev docs  --temp .temp",
-      "doc:build": "vuepress build docs"
+      "doc:dev": "vuepress dev   --temp .temp",
+      "doc:build": "vuepress build ",
+      "deploy": " deploy.sh"
     },
     "devDependencies": {
       "vuepress": "^1.9.7"
