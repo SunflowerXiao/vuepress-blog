@@ -1,0 +1,14 @@
+{
+  "name": "fishblog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "doc:dev": "vuepress dev docs  --temp .temp",
+    "doc:build": "vuepress build docs",
+    "deploy": " deploy.sh"
+  },
+  "devDependencies": {
+    "vuepress": "^1.9.7"
+  }
+}
