@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>关于如何使用一句话命令实现git的提交以及上传服务器 | fish&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="关于如何使用一句话命令实现git的提交以及上传服务器">
+    
+    <link rel="preload" href="/assets/css/0.styles.667637c8.css" as="style"><link rel="preload" href="/assets/js/app.8c92f831.js" as="script"><link rel="preload" href="/assets/js/6.443e61f5.js" as="script"><link rel="preload" href="/assets/js/3.9f552115.js" as="script"><link rel="preload" href="/assets/js/17.de546b6f.js" as="script"><link rel="prefetch" href="/assets/js/10.e9cd28f5.js"><link rel="prefetch" href="/assets/js/11.cbd9b195.js"><link rel="prefetch" href="/assets/js/12.93d79d9c.js"><link rel="prefetch" href="/assets/js/13.f86e697b.js"><link rel="prefetch" href="/assets/js/14.8a12cf53.js"><link rel="prefetch" href="/assets/js/15.c5821f3a.js"><link rel="prefetch" href="/assets/js/16.4fa4a373.js"><link rel="prefetch" href="/assets/js/4.ef28aa41.js"><link rel="prefetch" href="/assets/js/5.1e5a05dc.js"><link rel="prefetch" href="/assets/js/7.7b29a7bf.js"><link rel="prefetch" href="/assets/js/8.bcec0ff5.js"><link rel="prefetch" href="/assets/js/9.8d69914b.js"><link rel="prefetch" href="/assets/js/vuejs-paginate.372cfc28.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.667637c8.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="vuepress-theme-blog__global-layout"><section id="header-wrapper"><header id="header"><div class="header-wrapper"><div class="title"><a href="/" class="nav-link home-link">fish's blog </a></div> <div class="header-right-wrap"><ul class="nav"><li class="nav-item"><a href="/posts/" class="nav-link">Blog</a></li><li class="nav-item"><a href="/tag/" class="nav-link">Tags</a></li></ul> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></div></header></section> <div id="mobile-header"><div class="mobile-header-bar"><div class="mobile-header-title"><a href="/" class="nav-link mobile-home-link">fish's blog </a> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></div> <div class="mobile-menu-wrapper"><hr class="menu-divider"> <ul class="mobile-nav"><li class="mobile-nav-item"><a href="/posts/" class="nav-link">Blog</a></li><li class="mobile-nav-item"><a href="/tag/" class="nav-link">Tags</a></li> <li class="mobile-nav-item"><!----></li></ul></div></div></div> <div class="content-wrapper"><div id="vuepress-theme-blog__post-layout"><article itemscope="itemscope" itemtype="https://schema.org/BlogPosting" class="vuepress-blog-theme-content"><header><h1 itemprop="name headline" class="post-title">
+        关于如何使用一句话命令实现git的提交以及上传服务器
+      </h1> <div class="post-meta"><!----> <!----> <ul itemprop="keywords" class="post-meta-tags"><li class="post-tag" data-v-42ccfcd5><a href="/tag/Linux" data-v-42ccfcd5><span data-v-42ccfcd5>Linux</span></a></li><li class="post-tag" data-v-42ccfcd5><a href="/tag/Git" data-v-42ccfcd5><span data-v-42ccfcd5>Git</span></a></li></ul></div></header> <div itemprop="articleBody" class="content__default"><h2 id="package-json-中设置命令"><a href="#package-json-中设置命令" class="header-anchor">#</a> package.json 中设置命令</h2> <div class="language- extra-class"><pre><code>&quot;scripts&quot;: {
+    &quot;doc:dev&quot;: &quot;vuepress dev --temp .temp&quot;,
+    &quot;doc:build&quot;: &quot;vuepress build &quot;,
+    &quot;deploy&quot;: &quot; deploy.sh&quot;
+},
+</code></pre></div><h2 id="在文件根目录创建-deploy-sh"><a href="#在文件根目录创建-deploy-sh" class="header-anchor">#</a> 在文件根目录创建 deploy.sh</h2> <div class="language- extra-class"><pre><code>!/usr/bin/env sh
+
+# 确保脚本抛出遇到的错误
+set -e
+# 询问是否是git初始化
+read  -r -p &quot;你是否想要初始化git仓库? [Y/N]&quot; input
+case $input in
+    y* | Y*)
+        git init
+        git add -A
+        git commit -m 'first commit'
+        git branch -M master
+        git remote add origin git@github.com:SunflowerXiao/vuepress-blog.git;;
+    n* | N*)
+        git add -A
+        git commit -m 'deploy' ;;
+esac
+
+# git提交代码
+git push -u origin master
+
+# 推送到远程服务器的裸仓库
+#git remote add prod fish@121.37.215.79:/home/fish/repos/vuepress-blog.git
+#git push prod master
+
+# 生成静态文件
+yarn &amp;&amp; yarn doc:build
+
+
+# 清除远程服务器目录
+ssh fish@121.37.215.79 &quot;rm -rf /home/fish/www/blog/*&quot;
+# 将本地文件上传到服务器
+scp -r .vuepress/dist/* fish@121.37.215.79:/home/fish/www/blog
+
+#清除本地文件夹
+# rm -rf .vuepress/dist
+
+cd -
+</code></pre></div><h2 id="执行命令"><a href="#执行命令" class="header-anchor">#</a> 执行命令</h2> <div class="language- extra-class"><pre><code>npm run deploy
+</code></pre></div></div> <footer><!----> <hr> <!----></footer></article> <div class="sticker vuepress-toc"><div class="vuepress-toc-item vuepress-toc-h2 active"><a href="#package-json-中设置命令" title="package.json 中设置命令">package.json 中设置命令</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#在文件根目录创建-deploy-sh" title="在文件根目录创建 deploy.sh">在文件根目录创建 deploy.sh</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#执行命令" title="执行命令">执行命令</a></div></div></div></div> <footer class="footer" data-v-3d9deeb8><div class="footer-left-wrap" data-v-3d9deeb8><ul class="contact" data-v-3d9deeb8></ul></div> <div class="footer-right-wrap" data-v-3d9deeb8><ul class="copyright" data-v-3d9deeb8><li class="copyright-item" data-v-3d9deeb8><a href="http://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer" class="nav-link external" data-v-3d9deeb8>粤ICP备20016112号</a></li><li class="copyright-item" data-v-3d9deeb8><a href="https://github.com/zhb333/readme-blog" target="_blank" rel="noopener noreferrer" class="nav-link external" data-v-3d9deeb8>MIT Licensed | Copyright © 2020-present forapi.cn</a></li></ul></div></footer></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.8c92f831.js" defer></script><script src="/assets/js/6.443e61f5.js" defer></script><script src="/assets/js/3.9f552115.js" defer></script><script src="/assets/js/17.de546b6f.js" defer></script>
+  </body>
+</html>

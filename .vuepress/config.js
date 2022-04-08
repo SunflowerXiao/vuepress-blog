@@ -1,5 +1,5 @@
 module.exports = {
-  base: "/",
+  base: "/blog/",
   title: "fish's blog", // 站点名称
   description: "学习记录 代码分享 经验总结 开发教程", // 描述
   lange: "zh-CN", // 语言
