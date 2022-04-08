@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>关于JS的模块化 | fish&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="Js的模块化， CMD， AMD, UMD, COMMONJS, ES6, IIFE">
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.37e69681.css" as="style"><link rel="preload" href="/blog/assets/js/app.9c32e973.js" as="script"><link rel="preload" href="/blog/assets/js/6.fdc4afa4.js" as="script"><link rel="preload" href="/blog/assets/js/3.057efecc.js" as="script"><link rel="preload" href="/blog/assets/js/14.772ae37e.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.f5b34e21.js"><link rel="prefetch" href="/blog/assets/js/11.826901bc.js"><link rel="prefetch" href="/blog/assets/js/12.b8046def.js"><link rel="prefetch" href="/blog/assets/js/13.cbf4b6bd.js"><link rel="prefetch" href="/blog/assets/js/15.748a7e6f.js"><link rel="prefetch" href="/blog/assets/js/16.6b3a1791.js"><link rel="prefetch" href="/blog/assets/js/17.357eeb73.js"><link rel="prefetch" href="/blog/assets/js/18.5e66faaa.js"><link rel="prefetch" href="/blog/assets/js/19.aad3089b.js"><link rel="prefetch" href="/blog/assets/js/4.6a26dbe1.js"><link rel="prefetch" href="/blog/assets/js/5.8b063e75.js"><link rel="prefetch" href="/blog/assets/js/7.dde09f82.js"><link rel="prefetch" href="/blog/assets/js/8.e96daade.js"><link rel="prefetch" href="/blog/assets/js/9.84e48c6c.js"><link rel="prefetch" href="/blog/assets/js/vuejs-paginate.372cfc28.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.37e69681.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="vuepress-theme-blog__global-layout"><section id="header-wrapper"><header id="header"><div class="header-wrapper"><div class="title"><a href="/blog/" class="nav-link home-link">fish's blog </a></div> <div class="header-right-wrap"><ul class="nav"><li class="nav-item"><a href="/blog/posts/" class="nav-link">Blog</a></li><li class="nav-item"><a href="/blog/tag/" class="nav-link">Tags</a></li></ul> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></div></header></section> <div id="mobile-header"><div class="mobile-header-bar"><div class="mobile-header-title"><a href="/blog/" class="nav-link mobile-home-link">fish's blog </a> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></div> <div class="mobile-menu-wrapper"><hr class="menu-divider"> <ul class="mobile-nav"><li class="mobile-nav-item"><a href="/blog/posts/" class="nav-link">Blog</a></li><li class="mobile-nav-item"><a href="/blog/tag/" class="nav-link">Tags</a></li> <li class="mobile-nav-item"><!----></li></ul></div></div></div> <div class="content-wrapper"><div id="vuepress-theme-blog__post-layout"><article itemscope="itemscope" itemtype="https://schema.org/BlogPosting" class="vuepress-blog-theme-content"><header><h1 itemprop="name headline" class="post-title">
+        关于JS的模块化
+      </h1> <div class="post-meta"><!----> <!----> <ul itemprop="keywords" class="post-meta-tags"><li class="post-tag" data-v-42ccfcd5><a href="/blog/tag/js" data-v-42ccfcd5><span data-v-42ccfcd5>js</span></a></li></ul></div></header> <div itemprop="articleBody" class="content__default"><blockquote><p>模块化可以隔离作用域，定义自己的命名空间， 解决命名冲突，代码荣誉，依赖关系难以维护，变量污染等问题，提升代码的可读性和可复用性
+js 的模块化发展历程 IIFE &gt;&gt; CommonJS、 AMD、CMD、UMD &gt;&gt; ES6</p></blockquote> <h2 id="amd-和-cmd"><a href="#amd-和-cmd" class="header-anchor">#</a> AMD 和 CMD</h2> <p>AMD 和 CMD 都是模块加载规范， require.js 实现了 AMD 规范， 而 sea.js 实现了 CMD 规范</p> <p><strong>AMD 是 requireJs 在的推广和普及过程中被创造出来。</strong></p> <p><strong>CMD 是 SeaJS 在的推广和普及过程中被创造出来。</strong></p> <blockquote><p>二者的的主要区别是 CMD 推崇依赖就近，AMD 推崇依赖前置</p></blockquote> <h3 id="amd-依赖前置"><a href="#amd-依赖前置" class="header-anchor">#</a> AMD 依赖前置</h3> <div class="language- extra-class"><pre><code>/**
+* @param {string} id 模块名称
+* @param {string[]} dependencies 模块所依赖模块的数组
+* @param {function} factory 模块初始化要执行的函数或对象
+* @return {any} 模块导出的接口
+*/
+function define(id?, dependencies?, factory): any
+
+
+/**
+*  定义模块moduleA
+*  引入的依赖lodash
+**/
+// a.js
+define('moduleA', ['lodash'], function(lodash) {
+    let fn = function() {}
+    lodash.throttle(fn)
+})
+
+/**
+*
+*  引入的依赖moduleA
+**/
+// b.js
+require([moduleA], function (moduleA){
+    console.log(moduleA.a); // 打印出：hello world
+});
+</code></pre></div><h3 id="cmd-依赖就近"><a href="#cmd-依赖就近" class="header-anchor">#</a> CMD 依赖就近</h3> <div class="language- extra-class"><pre><code>function define(factory): any
+
+/**
+*  定义模块a
+**/
+// a.js
+define(function (require, exports, module){
+　　exports.a = 'hello world';
+});
+
+/**
+*  在工厂函数中再去引入需要用到的依赖
+**/
+// b.js
+define(function (require, exports, module){
+    var moduleA = require('./a.js');
+    console.log(moduleA.a); // 打印出：hello world
+});
+</code></pre></div><h2 id="commonjs"><a href="#commonjs" class="header-anchor">#</a> CommonJS</h2> <ul><li><p>适用于 node 服务器端</p></li> <li><p>commonJS 是同步加载</p></li></ul> <h3 id="exports"><a href="#exports" class="header-anchor">#</a> exports</h3> <blockquote><p>注意：module.exports 和 exports 的区别是 exports 只是对 module.exports 的一个引用，相当于 Node 为每个模块提供一个 exports 变量，指向 module.exports。这等同在每个模块头部，有一行 var exports = module.exports;这样的命令。</p></blockquote> <div class="language- extra-class"><pre><code>// a.js
+var person = {
+    name: 'ddd'
+}
+exports.person = person
+
+// b.js
+var person = require('./a.js')
+console.log(person.name)
+</code></pre></div><h3 id="module-exports"><a href="#module-exports" class="header-anchor">#</a> module.exports</h3> <div class="language- extra-class"><pre><code>// a.js
+var person = {
+    name: 'ddd'
+}
+module.exports = person
+
+// b.js
+var person = require('./a.js')
+console.log(person.name)
+</code></pre></div><h2 id="umd"><a href="#umd" class="header-anchor">#</a> UMD</h2> <div class="language- extra-class"><pre><code>(function(root, factory){
+    if (typeof define === 'function' &amp;&amp; define.amd) {
+        // 判断是否支持 AMD
+        define([], factory)
+    }else if (typeof module === 'object' &amp;&amp; module.exports) {
+        // 判断 CommontJS
+        module.exports = factory()
+    } else if (typeof exports === 'object') {
+        // CommonJS
+        exports.myLibName = factory()
+    } else {
+        // 全局变量
+        root.myLibName = factory()
+    }
+
+})(window, function() {
+    return {};
+})
+</code></pre></div><p>测试</p> <div class="language- extra-class"><pre><code>(function (root, factory) {
+    if (typeof define === 'function' &amp;&amp; define.amd) {
+        //AMD
+        define(['jquery'], factory);
+    } else if (typeof exports === 'object') {
+        //Node, CommonJS之类的
+        module.exports = factory(require('jquery'));
+    } else {
+        //浏览器全局变量(root 即 window)
+        root.returnExports = factory(root.jQuery);
+    }
+}(this, function ($) {
+    //方法
+    function myFunc(){};
+    //暴露公共方法
+    return myFunc;
+}));
+</code></pre></div><h2 id="es6-node"><a href="#es6-node" class="header-anchor">#</a> ES6 <code>node</code></h2> <h3 id="mjs-与-js"><a href="#mjs-与-js" class="header-anchor">#</a> .mjs 与 .js</h3> <p>.mjs 表示这个 js 文件是一个模块文件，但是现阶段服务器如果需要正确响应.mjs 后缀的文件，需要配置 <code>content-type</code> 的 <code>MIME</code>类型</p> <h3 id="export-导出"><a href="#export-导出" class="header-anchor">#</a> export 导出</h3> <div class="language- extra-class"><pre><code>// 导出一个常量
+export const a = 10
+// 导出一个方法
+export function a() {
+
+}
+
+// 导出多个数据
+const a = {}
+const b = 12
+export {
+    a, b
+}
+// 默认导出
+export default defaultVariable
+</code></pre></div><h3 id="import-导入"><a href="#import-导入" class="header-anchor">#</a> import 导入</h3> <div class="language- extra-class"><pre><code>// 导入
+import {a} from './a.js'
+import defaultVariable from './default.js'
+import {a as b} from './a.js'
+</code></pre></div><h3 id="script-引入"><a href="#script-引入" class="header-anchor">#</a> script 引入</h3> <div class="language- extra-class"><pre><code>&lt;script type=&quot;module&quot; src=&quot;./a.js&quot;&gt; &lt;/script&gt;
+</code></pre></div><h3 id="动态加载模块"><a href="#动态加载模块" class="header-anchor">#</a> 动态加载模块</h3> <div class="language- extra-class"><pre><code>import('/modules/myModule.mjs')
+.then((module) =&gt; {})
+</code></pre></div><h2 id="比较"><a href="#比较" class="header-anchor">#</a> 比较</h2> <table style="font-size:12px;"><tr><td></td> <td>加载方式</td> <td>加载次数</td> <td>适用场景</td> <td>导入方式</td> <td>导出方式</td></tr> <tr><td>AMD</td> <td>1.运行时加载。异步加载。  
+2.模块加载完成之后就会执行， 但是会等到所有模块都执行完成之后再进入回调函数， 模块的执行顺序和书写顺序不一定一致</td> <td></td> <td>浏览器环境，requireJS是参照AMD规范实现的</td> <td>require(['模块名称'], function ('模块变量引用'){// 代码});</td> <td>define(function (){return '值');</td></tr> <tr><td>CMD</td> <td>1.运行时加载。异步加载。 2.模块加载完成之后并不会执行， 所有模块都下载完成之后， 遇到require语句才执行相应的模块， 模块的执行顺序和书写顺序一致</td> <td></td> <td></td> <td></td> <td></td></tr> <tr><td>CommonJs</td> <td>1. 运行时加载。同步加载。 2.模块加载会阻塞接下来代码的执行，需要等到模块加载完成才能继续执行</td> <td>模块可以被多次加载，但是只会在第一次加载时候运行一次， 后面会从缓存读取</td> <td>node服务器</td> <td>require('路径') </td> <td>module.exports和exports</td></tr> <tr><td>UMD</td> <td></td> <td></td> <td>兼容AMD和commonJS规范的同时，还兼容全局引用的方式。</td> <td></td> <td></td></tr> <tr><td>ES6</td> <td>编译时加载。 按需加载</td> <td></td> <td></td> <td></td> <td></td></tr></table></div> <footer><!----> <hr> <!----></footer></article> <div class="sticker vuepress-toc"><div class="vuepress-toc-item vuepress-toc-h2 active"><a href="#amd-和-cmd" title="AMD 和 CMD">AMD 和 CMD</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#amd-依赖前置" title="AMD 依赖前置">AMD 依赖前置</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#cmd-依赖就近" title="CMD 依赖就近">CMD 依赖就近</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#commonjs" title="CommonJS">CommonJS</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#exports" title="exports">exports</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#module-exports" title="module.exports">module.exports</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#umd" title="UMD">UMD</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#es6-node" title="ES6 node">ES6 node</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#mjs-与-js" title=".mjs 与 .js">.mjs 与 .js</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#export-导出" title="export 导出">export 导出</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#import-导入" title="import 导入">import 导入</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#script-引入" title="script 引入">script 引入</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#动态加载模块" title="动态加载模块">动态加载模块</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#比较" title="比较">比较</a></div></div></div></div> <footer class="footer" data-v-3d9deeb8><div class="footer-left-wrap" data-v-3d9deeb8><ul class="contact" data-v-3d9deeb8></ul></div> <div class="footer-right-wrap" data-v-3d9deeb8><ul class="copyright" data-v-3d9deeb8><li class="copyright-item" data-v-3d9deeb8><a href="http://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer" class="nav-link external" data-v-3d9deeb8>粤ICP备20016112号</a></li><li class="copyright-item" data-v-3d9deeb8><a href="https://github.com/zhb333/readme-blog" target="_blank" rel="noopener noreferrer" class="nav-link external" data-v-3d9deeb8>MIT Licensed | Copyright © 2020-present forapi.cn</a></li></ul></div></footer></div><div class="global-ui"></div></div>
+    <script src="/blog/assets/js/app.9c32e973.js" defer></script><script src="/blog/assets/js/6.fdc4afa4.js" defer></script><script src="/blog/assets/js/3.057efecc.js" defer></script><script src="/blog/assets/js/14.772ae37e.js" defer></script>
+  </body>
+</html>
