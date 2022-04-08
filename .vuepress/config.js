@@ -1,3 +1,4 @@
+var path = require("path");
 module.exports = {
   base: "/blog/",
   title: "fish's blog", // 站点名称
@@ -37,10 +38,16 @@ module.exports = {
         // itemPermalink: "/posts/:year/:month/:day/:slug",
       },
       {
+        id: "js",
+        dirname: path.resolve(__dirname, "../_posts/JS"),
+        path: "/js/",
+        // itemPermalink: "/posts/:year/:month/:day/:slug",
+      },
+      {
         id: "post",
         dirname: "_posts",
         path: "/posts/",
-        itemPermalink: "/posts/:year/:month/:day/:slug",
+        // itemPermalink: "/posts/:year/:month/:day/:slug",
       },
     ],
     footer: {
