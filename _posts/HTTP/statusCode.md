@@ -103,8 +103,16 @@ summary: HTTP 的状态码
 
 #### 502 Bad Gateway
 
+网关错误
+
 #### 503 Service Unavailable
+
+服务器拒绝客户端的请求。 由于服务器临时维护或者过载，服务器无法处理当前请求.这个拒绝是临时的， 返回的实体头部需要带上 `Retry-After` 来表明延迟时间，如果不设置`Retry-After`, 应该返回 500
 
 #### 504 Gateway Timeout
 
+网关超时
+
 #### 505 HTTP Version Not Supported
+
+http 的协议类型类型不支持
