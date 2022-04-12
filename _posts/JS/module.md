@@ -4,6 +4,7 @@ tags:
   - js
 location: fish
 summary: Js的模块化， CMD， AMD, UMD, COMMONJS, ES6, IIFE
+date: 2021-04-07
 ---
 
 > 模块化可以隔离作用域，定义自己的命名空间， 解决命名冲突，代码荣誉，依赖关系难以维护，变量污染等问题，提升代码的可读性和可复用性

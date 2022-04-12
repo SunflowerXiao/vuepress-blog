@@ -1,4 +1,25 @@
 var path = require("path");
+var fs = require("fs");
+// 获取文件目录
+
+const directories = fs.readdirSync("./_posts/");
+let routes = [];
+let navs = [];
+directories.forEach((name) => {
+  const obj = {
+    id: name,
+    dirname: `_posts/${name}`,
+    path: `/${name}/`,
+    itemPermalink: `/posts/${name}/`,
+    // layout: "ListLayout",
+  };
+  routes.push(obj);
+  navs.push({
+    text: name,
+    link: `/${name}/`,
+  });
+});
+console.log(routes);
 module.exports = {
   base: "/blog/",
   title: "fish's blog", // 站点名称
@@ -8,6 +29,13 @@ module.exports = {
     ".vuepress/**/*", // 使用相对路径
     "/_posts/**/*", // 使用绝对路径
   ],
+  configureWebpack: {
+    resolve: {
+      alias: {
+        "@img": "public/img",
+      },
+    },
+  },
   theme: require.resolve("./theme/"), // 使用自定义主题
   markdown: {
     // markdown 配置
@@ -18,10 +46,7 @@ module.exports = {
     dateFormat: "YYYY-MM-DD",
     nav: [
       // 导航
-      {
-        text: "Blog",
-        link: "/posts/",
-      },
+      ...navs,
       {
         text: "Tags",
         link: "/tag/",
@@ -35,20 +60,14 @@ module.exports = {
         dirname: "_posts",
         path: "/",
         layout: "HomeLayout",
-        // itemPermalink: "/posts/:year/:month/:day/:slug",
       },
-      {
-        id: "js",
-        dirname: path.resolve(__dirname, "../_posts/JS"),
-        path: "/js/",
-        // itemPermalink: "/posts/:year/:month/:day/:slug",
-      },
-      {
-        id: "post",
-        dirname: "_posts",
-        path: "/posts/",
-        // itemPermalink: "/posts/:year/:month/:day/:slug",
-      },
+      ...routes,
+      // {
+      //   id: "post",
+      //   dirname: "_posts",
+      //   path: "/posts/",
+      //   // itemPermalink: "/posts/:year/:month/:day/:slug",
+      // },
     ],
     footer: {
       // 页脚

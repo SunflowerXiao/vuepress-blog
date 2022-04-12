@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>HTTP报文 | fish&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    
+    <meta name="description" content="HTTP报文信息">
+    
+    <link rel="preload" href="/blog/assets/css/0.styles.7fdf952b.css" as="style"><link rel="preload" href="/blog/assets/js/app.d131486f.js" as="script"><link rel="preload" href="/blog/assets/js/6.9dabe701.js" as="script"><link rel="preload" href="/blog/assets/js/3.30cfd293.js" as="script"><link rel="preload" href="/blog/assets/js/15.5dd0b737.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.f5b34e21.js"><link rel="prefetch" href="/blog/assets/js/11.826901bc.js"><link rel="prefetch" href="/blog/assets/js/12.b8046def.js"><link rel="prefetch" href="/blog/assets/js/13.cbf4b6bd.js"><link rel="prefetch" href="/blog/assets/js/14.11d73118.js"><link rel="prefetch" href="/blog/assets/js/16.9e6b116d.js"><link rel="prefetch" href="/blog/assets/js/17.00f8d3fc.js"><link rel="prefetch" href="/blog/assets/js/18.a34fcebf.js"><link rel="prefetch" href="/blog/assets/js/19.676be9e9.js"><link rel="prefetch" href="/blog/assets/js/20.c0869120.js"><link rel="prefetch" href="/blog/assets/js/21.116f993e.js"><link rel="prefetch" href="/blog/assets/js/22.98f39abf.js"><link rel="prefetch" href="/blog/assets/js/4.9b85220c.js"><link rel="prefetch" href="/blog/assets/js/5.9084b628.js"><link rel="prefetch" href="/blog/assets/js/7.032aaae7.js"><link rel="prefetch" href="/blog/assets/js/8.23d674ac.js"><link rel="prefetch" href="/blog/assets/js/9.3e1314de.js"><link rel="prefetch" href="/blog/assets/js/vuejs-paginate.372cfc28.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.7fdf952b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="vuepress-theme-blog__global-layout"><section id="header-wrapper"><header id="header"><div class="header-wrapper"><div class="title"><a href="/blog/" class="nav-link home-link">fish's blog </a></div> <div class="header-right-wrap"><ul class="nav"><li class="nav-item"><a href="/blog/posts/" class="nav-link">Blog</a></li><li class="nav-item"><a href="/blog/tag/" class="nav-link">Tags</a></li></ul> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></div></header></section> <div id="mobile-header"><div class="mobile-header-bar"><div class="mobile-header-title"><a href="/blog/" class="nav-link mobile-home-link">fish's blog </a> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></div> <div class="mobile-menu-wrapper"><hr class="menu-divider"> <ul class="mobile-nav"><li class="mobile-nav-item"><a href="/blog/posts/" class="nav-link">Blog</a></li><li class="mobile-nav-item"><a href="/blog/tag/" class="nav-link">Tags</a></li> <li class="mobile-nav-item"><!----></li></ul></div></div></div> <div class="content-wrapper"><div id="vuepress-theme-blog__post-layout"><article itemscope="itemscope" itemtype="https://schema.org/BlogPosting" class="vuepress-blog-theme-content"><header><h1 itemprop="name headline" class="post-title">
+        HTTP报文
+      </h1> <div class="post-meta"><!----> <!----> <ul itemprop="keywords" class="post-meta-tags"><li class="post-tag" data-v-42ccfcd5><a href="/blog/tag/http" data-v-42ccfcd5><span data-v-42ccfcd5>http</span></a></li></ul></div></header> <div itemprop="articleBody" class="content__default"><h2 id="http-的请求报文"><a href="#http-的请求报文" class="header-anchor">#</a> http 的请求报文</h2> <ul><li>请求行</li></ul> <p>请求方法字段+ 空格 + URL 字段 + 空格 + HTTP 协议版本字段。 例如，GET /index.html HTTP/1.1。</p> <ul><li><p>请求头</p></li> <li><p>空行</p></li> <li><p>请求体</p> <p><img src="http://threewildcat.com/static/request%E6%8A%A5%E6%96%87.png" alt="request 请求报文"></p></li></ul> <h2 id="http-的响应报文"><a href="#http-的响应报文" class="header-anchor">#</a> http 的响应报文</h2> <ul><li>响应行</li></ul> <p>协议版本 + 空格 + 状态码 + 空格 + 状态码原因短语</p> <ul><li><p>响应头</p></li> <li><p>空行</p></li> <li><p>响应体</p> <p><img src="http://threewildcat.com/static/response_baowen.jpg" alt="request 响应报文"></p></li></ul> <h2 id="header"><a href="#header" class="header-anchor">#</a> Header</h2> <h3 id="通用首部字段-general-header-fields"><a href="#通用首部字段-general-header-fields" class="header-anchor">#</a> 通用首部字段（General Header Fields）</h3> <p>请求报文和响应报文两方都会使用的首部</p> <blockquote><p>Cache-control</p></blockquote> <ul><li>Cache-control 指令是单向的，在 请求 中设置的指令，不一定包含在 响应 中</li> <li>不区分大小写</li> <li>多个指令通过','隔开</li> <li>具有可选参数</li></ul> <p><strong>Cache-control 的值</strong></p> <p><code>public</code>
+任何对象都可缓存该请求内容(POST)</p> <p><code>private</code>
+私有缓存（浏览器缓存）
+<code>no-cache</code>
+可以缓存，但是每次都必须访问以下服务器（304）
+<code>no-store</code>
+不可以缓存
+<code>max-age</code>
+相对于请求时间，设置过期时间
+<code>s-maxage</code>
+共享缓存使用， 私有缓存依旧使用 max-age
+<code>max-stale</code> <code>min-fresh</code></p> <p><code>must-revalidate</code>
+一旦资源过期（比如已经超过 max-age），在成功向原始服务器验证之前，缓存不能用该资源响应后续请求。
+<code>proxy-revalidate</code>
+共享缓存使用，私有缓存依旧使用 must-revalidate
+<code>no-transform</code> <code>only-if-cached</code>
+表明客户端只接受已缓存的响应，并且不要向原始服务器检查是否有更新的拷贝。（只读取强缓存）</p> <p><strong><em>如何在请求中使用</em></strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Cache-Control: max-age=&lt;seconds&gt;
+Cache-Control: max-stale[=&lt;seconds&gt;]
+Cache-Control: min-fresh=&lt;seconds&gt;
+Cache-control: no-cache
+Cache-control: no-store
+Cache-control: no-transform
+Cache-control: only-if-cached
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p><strong><em>如何在响应中使用</em></strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Cache-control: must-revalidate
+Cache-control: no-cache
+Cache-control: max-age=0, must-revalidate
+Cache-control: no-store
+Cache-control: no-transform
+Cache-control: public
+Cache-control: private
+Cache-control: proxy-revalidate
+Cache-Control: max-age=&lt;seconds&gt;
+Cache-control: s-maxage=&lt;seconds&gt;
+Cache-Control:public, max-age=31536000
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p><font style="color:#999;font-size:12px;">响应头设置 <code>no-store</code> 可以关闭该请求的缓存</font><br>
+Cache-control: no-store</p> <p><font style="color:#999;font-size:12px;">响应头设置 <code>no-cache</code> <code>max-age=0, must-revalidate</code> 表示客户端可以缓存资源，每次使用缓存资源前都必须重新验证其有效性。这意味着每次都会发起 HTTP 请求，但当缓存内容仍有效时可以跳过 HTTP 响应体的下载 (关闭该请求的强缓存， 但是依旧存在弱缓存)</font><br>
+Cache-control: no-cache<br>
+Cache-control: max-age=0, must-revalidate</p> <p><font style="color:#999;font-size:12px;">设置请求可以被共享，并且 31536000s 后过期</font><br>
+Cache-Control:public, max-age=31536000</p> <blockquote><p>Pragma</p></blockquote> <p>行为与 <code>Cache-Control: no-cache</code> 一致。建议只在需要兼容 <code>HTTP/1.0</code> 客户端的场合下应用 Pragma 首部。</p> <p><strong>语法</strong></p> <p>Pragma: no-cache</p> <blockquote><p>Connection</p></blockquote> <p><strong>语法</strong></p> <p>Connection: close // Http1.0 请求的默认值， 请求成功后关闭连接<br>
+Connection: keep-alive // 持久连接， Http1.1 默认使用 keep-alive</p> <blockquote><p>Upgrade<br>
+via<br>
+Warning<br>
+Transfor-Encoding<br>
+Date</p></blockquote> <h3 id="reauest-header-fields"><a href="#reauest-header-fields" class="header-anchor">#</a> Reauest Header Fields</h3> <p>客户端向服务器发送请求的报文时使用的首部
+Accept
+Accept-Encoding
+Accept-Language
+Accept-Charset
+If-Match
+If-None-Match
+If-Modified-Since
+If-Unmodified-Since
+If-Ranges
+Range
+Authorization
+Proxy-Authorization
+Host
+User-Agent
+Referer
+Cookie</p> <h3 id="response-header"><a href="#response-header" class="header-anchor">#</a> Response header</h3> <p>从服务器向客户端响应时使用的字段
+Accept-Ranges
+Age
+Location
+vary
+ETag
+WWW-Authenticate
+Proxy-Authenticate
+Server
+Retry-After</p> <h3 id="实体首部字段-entiy-header-fields"><a href="#实体首部字段-entiy-header-fields" class="header-anchor">#</a> 实体首部字段（Entiy Header Fields）</h3> <p>针对请求报文和响应报文的实体部分使用首部</p> <p>Access-Allow-Origin
+Access-Allow-Methods
+Content-Encoding
+Content-Type
+Last-Modified
+Expires
+....</p></div> <footer><!----> <hr> <!----></footer></article> <div class="sticker vuepress-toc"><div class="vuepress-toc-item vuepress-toc-h2 active"><a href="#http-的请求报文" title="http 的请求报文">http 的请求报文</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#http-的响应报文" title="http 的响应报文">http 的响应报文</a></div><div class="vuepress-toc-item vuepress-toc-h2"><a href="#header" title="Header">Header</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#通用首部字段-general-header-fields" title="通用首部字段（General Header Fields）">通用首部字段（General Header Fields）</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#reauest-header-fields" title="Reauest Header Fields">Reauest Header Fields</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#response-header" title="Response header">Response header</a></div><div class="vuepress-toc-item vuepress-toc-h3"><a href="#实体首部字段-entiy-header-fields" title="实体首部字段（Entiy Header Fields）">实体首部字段（Entiy Header Fields）</a></div></div></div></div> <footer class="footer" data-v-3d9deeb8><div class="footer-left-wrap" data-v-3d9deeb8><ul class="contact" data-v-3d9deeb8></ul></div> <div class="footer-right-wrap" data-v-3d9deeb8><ul class="copyright" data-v-3d9deeb8><li class="copyright-item" data-v-3d9deeb8><a href="http://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer" class="nav-link external" data-v-3d9deeb8>粤ICP备20016112号</a></li><li class="copyright-item" data-v-3d9deeb8><a href="https://github.com/zhb333/readme-blog" target="_blank" rel="noopener noreferrer" class="nav-link external" data-v-3d9deeb8>MIT Licensed | Copyright © 2020-present forapi.cn</a></li></ul></div></footer></div><div class="global-ui"></div></div>
+    <script src="/blog/assets/js/app.d131486f.js" defer></script><script src="/blog/assets/js/6.9dabe701.js" defer></script><script src="/blog/assets/js/3.30cfd293.js" defer></script><script src="/blog/assets/js/15.5dd0b737.js" defer></script>
+  </body>
+</html>
