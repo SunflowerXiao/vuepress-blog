@@ -64,7 +64,7 @@ function unique(arr) {
 }
 ```
 
-## 利用 filter
+## 利用 filter + 判断 Index
 
 ```
 function unique(arr) {
