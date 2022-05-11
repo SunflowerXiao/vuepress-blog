@@ -2,6 +2,7 @@
 title: js的数据类型
 tags:
   - JS
+  - s20220412
 location: fish
 summary: Number, String, Null, Undefined, Boolean, Object, Symbol, BigInt
 date: 2022-04-12

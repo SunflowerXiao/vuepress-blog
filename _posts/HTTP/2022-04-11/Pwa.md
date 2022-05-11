@@ -2,6 +2,7 @@
 title: pwa
 tags:
   - http
+  - s20220411
 location: fish
 summary: 渐进式网页应用，简单的理解，就是你的网页，可以通过某种方式达到离线使用。
 date: 2022-04-11

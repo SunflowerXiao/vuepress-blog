@@ -2,6 +2,7 @@
 title: Http缓存
 tags:
   - http
+  - s20220411
 location: fish
 summary: 强缓存，弱缓存
 date: 2022-04-11

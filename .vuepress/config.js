@@ -36,6 +36,14 @@ module.exports = {
       },
     },
   },
+  head: [
+    [
+      "script",
+      {
+        src: "https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js",
+      },
+    ],
+  ],
   theme: require.resolve("./theme/"), // 使用自定义主题
   markdown: {
     // markdown 配置

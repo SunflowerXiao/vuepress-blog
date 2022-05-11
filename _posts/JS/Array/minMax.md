@@ -3,6 +3,7 @@ title: 求数组元素中的最大值和最小值
 tags:
   - JS
   - Array
+  - s20220412
 location: fish
 summary: 求数组元素中的最大值和最小值
 date: 2022-04-12

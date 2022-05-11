@@ -2,8 +2,10 @@
 title: UDP协议
 tags:
   - http
+  - s20220413
 location: fish
 summary: UDP（User Datagram Protocol：用户数据报协议）
+date: 2022-04-13
 ---
 
 ## 数据报模式

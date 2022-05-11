@@ -2,6 +2,7 @@
 title: js节点的属性和方法
 tags:
   - JS
+  - s20220413
 location: fish
 summary: JS中可以操作节点的方法和获取节点的属性
 date: 2022-04-13

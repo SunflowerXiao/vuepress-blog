@@ -2,6 +2,7 @@
 title: 文档片段接口
 tags:
   - JS
+  - s20220413
 location: fish
 summary: DocumentFragment，文档片段接口，一个没有父对象的最小文档对象，存储由节点（nodes）组成的文档结构。 不是真实DOM的一部分，所以他的变化不会触发DOM树的重新渲染
 date: 2022-04-13

@@ -2,8 +2,10 @@
 title: Tcp/Ip
 tags:
   - http
+  - s20220413
 location: fish
 summary: TCP是一个可靠的传输协议，因为他解决了丢包重传， 乱序， 字节流， 拥塞控制等问题
+date: 2022-04-13
 ---
 
 ## 网络分层原理

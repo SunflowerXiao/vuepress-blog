@@ -2,6 +2,7 @@
 title: 原型和原型链
 tags:
   - JS
+  - s20220412
 location: fish
 summary:
 date: 2022-04-12

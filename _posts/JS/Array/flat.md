@@ -3,6 +3,7 @@ title: 数组的扁平化
 tags:
   - JS
   - Array
+  - s20220412
 location: fish
 summary: 数组的扁平化
 date: 2022-04-12

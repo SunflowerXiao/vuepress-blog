@@ -2,6 +2,7 @@
 title: 数据类型的判断
 tags:
   - JS
+  - s20220412
 location: fish
 summary: Object.prototype.toString.call(xxx), xxx.constructor, typeof , instanceOf
 date: 2022-04-12

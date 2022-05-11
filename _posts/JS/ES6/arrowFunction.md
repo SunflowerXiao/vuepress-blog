@@ -2,6 +2,7 @@
 title: 箭头函数
 tags:
   - js
+  - s20220412
 location: fish
 summary:
 date: 2022-04-12

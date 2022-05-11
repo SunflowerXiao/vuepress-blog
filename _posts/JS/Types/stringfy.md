@@ -2,6 +2,7 @@
 title: JSON.stringfy()
 tags:
   - JS
+  - s20220412
 location: fish
 summary: 不同数据形式通过 JSON.stringfy() 后的结果
 date: 2022-04-12

@@ -2,6 +2,7 @@
 title: 继承
 tags:
   - JS
+  - s20220412
 location: fish
 summary: 原型继承，构造函数继承，组合式继承，寄生组合式继承
 date: 2022-04-12
